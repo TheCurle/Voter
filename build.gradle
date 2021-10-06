@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'uk.gemwire'
+version '0.2'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.kohsuke:github-api:1.133'
+}
