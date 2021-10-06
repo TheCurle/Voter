@@ -67,6 +67,10 @@ public class JWTGen {
             long expMillis = nowMillis + ttlMillis;
             Date exp = new Date(expMillis);
             builder.setExpiration(exp);
+        } else {
+            // Default to 10 minutes
+            Date exp = new Date(nowMillis + (1000 * 60 * 10));
+            builder.setExpiration(exp);
         }
 
         // Build the JWT and serializes it to a compact, URL-safe string

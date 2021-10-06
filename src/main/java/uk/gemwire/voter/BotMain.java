@@ -35,7 +35,10 @@ public class BotMain {
             Config.readConfigs();
             GitHub login = new GitHubBuilder().withJwtToken(JWTGen.createJWT("143063", 0)).build();
             GHApp app = login.getApp();
-            Logger.getAnonymousLogger().info("Github App " + app.getName() + " by " + app.getOwner().getName() + " loaded. Finding installation..");
+            Logger.getAnonymousLogger().info("Github App " + app.getName() + " loaded. Finding installation..");
+
+            GHAppInstallation install = app.getInstallationById(Config.INSTALLATION_ID);
+            Logger.getAnonymousLogger().info("Installation " + Config.INSTALLATION_ID + " found. ");
 
 
         } catch (Exception exception) {

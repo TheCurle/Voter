@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class Config {
     // The ID of the Installation of this instance of the bot. (The organization this bot was installed to)
-    public static int INSTALLATION_ID = 0;
+    public static long INSTALLATION_ID = 0;
     // The threshold to consider a vote a majority.
     public static int VOTE_THRESHOLD = 2;
     // The minimum number of votes that a PR needs to be considered for automated action.
@@ -30,7 +30,7 @@ public class Config {
 
         try {
             props.load(new FileInputStream("config.properties"));
-            INSTALLATION_ID = Integer.parseInt(props.getProperty("installation"));
+            INSTALLATION_ID = Long.parseLong(props.getProperty("installation"));
             VOTE_THRESHOLD = Integer.parseInt(props.getProperty("threshold"));
             VOTE_MINIMUM = Integer.parseInt(props.getProperty("minimum_votes"));
         } catch (Exception e) {
