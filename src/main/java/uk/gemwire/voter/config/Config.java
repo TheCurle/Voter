@@ -32,7 +32,7 @@ public class Config {
         Properties props = new Properties();
 
         try {
-            props.load(new FileInputStream("config.properties").);
+            props.load(new FileInputStream("config.properties"));
             INSTALLATION_ID = Integer.parseInt(props.getProperty("installation"));
             VOTE_THRESHOLD = Integer.parseInt(props.getProperty("threshold"));
             VOTE_MINIMUM = Integer.parseInt(props.getProperty("minimum_votes"));
