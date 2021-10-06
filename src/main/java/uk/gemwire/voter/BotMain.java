@@ -1,6 +1,15 @@
 package uk.gemwire.voter;
 
 
+import org.kohsuke.github.GHApp;
+import org.kohsuke.github.GHAppInstallation;
+import org.kohsuke.github.GitHub;
+import org.kohsuke.github.GitHubBuilder;
+import uk.gemwire.voter.auth.JWTGen;
+import uk.gemwire.voter.config.Config;
+
+import java.util.logging.Logger;
+
 /**
  * The entry point for the Voter bot.
  *
@@ -16,8 +25,21 @@ package uk.gemwire.voter;
  */
 public class BotMain {
 
-
+    /**
+     * Bot starting point.
+     * Logs in, and hands off to the specific thread for the specified organization / repository.
+     * @param args
+     */
     public static void main(String[] args) {
+        try {
+            Config.readConfigs();
+            GitHub login = new GitHubBuilder().withJwtToken(JWTGen.createJWT("143063", 0)).build();
+            GHApp app = login.getApp();
+            Logger.getAnonymousLogger().info("Github App " + app.getName() + " by " + app.getOwner().getName() + " loaded. Finding installation..");
 
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 }
